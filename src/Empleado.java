@@ -45,8 +45,12 @@ public abstract class Empleado implements Cloneable {
     public abstract double calcularSalario();
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone(); 
+    public Empleado clone() {
+        try {
+            return (Empleado) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Error al clonar el empleado", e);
+        }
     }
     public String obtenerCategoria(){
         double salario=calcularSalario();
